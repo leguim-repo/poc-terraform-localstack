@@ -81,3 +81,13 @@ coverage-report: ## coverage report of all tests
 	coverage run -m unittest discover
 	coverage html
 	open htmlcov/index.html
+
+.PHONY: deploy
+deploy: ## Deploy in Localstack
+	cd infrastructure; \
+	terraform apply -auto-approve
+
+.PHONY: plan
+plan: ## terraform plan
+	cd infrastructure; \
+	terraform plan -state=infrastructure -state-out=infrastructure
