@@ -1,0 +1,6 @@
+flake8
+black
+isort
+coverage
+coverage-badge
+awscli-local
