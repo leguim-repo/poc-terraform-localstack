@@ -1,7 +1,7 @@
-output "bucket-intake" {
-  value = aws_s3_bucket.bucket-intake.arn
+output "intake_bucket" {
+  value = aws_s3_bucket.intake_bucket.arn
 }
 
-output "bucket-consum" {
-  value = aws_s3_bucket.bucket-consum.arn
+output "consum_bucket" {
+  value = aws_s3_bucket.consum_bucket.arn
 }

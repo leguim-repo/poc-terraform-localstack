@@ -1,14 +1,14 @@
 version: '3.4'
 services:
-    localstack:
-        image: localstack/localstack:0.14.3.1
-        container_name: tf_localstack
-        ports:
-            - 4566:4566
-        volumes:
-            - /var/run/docker.sock:/var/run/docker.sock
+  localstack:
+    image: localstack/localstack:0.14.3.1
+    container_name: tf_localstack
+    ports:
+      - "127.0.0.1:4566:4566" # LocalStack Edge Proxy
+    environment:
+      #- SERVICES=cloudformation,iam,s3,lambda,events,ssm,sqs,sns,kms,ec2
+      - DEBUG=1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: bridge
 
-networks:
-    default:
-        name: localstack
-        

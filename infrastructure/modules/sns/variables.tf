@@ -1,11 +1,11 @@
-variable "intake_bucket" {
+variable "sns_reception_topic" {
   type    = string
-  default = "intake"
+  default = "sns_reception_topic"
 }
 
-variable "consum_bucket" {
+variable "lambda_role_execution" {
   type    = string
-  default = "consum"
+  default = "lambda_role_execution"
 }
 
 variable "environment" {
