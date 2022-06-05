@@ -90,4 +90,10 @@ deploy: ## Deploy in Localstack
 .PHONY: plan
 plan: ## terraform plan
 	cd infrastructure; \
+	terraform init; \
 	terraform plan -state=infrastructure -state-out=infrastructure
+
+.PHONY: upload-unicorn
+upload-unicorn: ## Upload unicorn to intake bucket
+	cd resources; \
+	awslocal s3 cp unicorn.jpeg s3://s3-intake-fundaciontonymanero-test/pictures/unicorn.jpeg

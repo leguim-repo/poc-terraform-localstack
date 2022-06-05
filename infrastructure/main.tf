@@ -23,7 +23,7 @@ module "buckets" {
   tags          = local.tags
   project_name  = local.tags.Project
   intake_bucket = local.intake_bucket
-  consum_bucket = local.intake_bucket
+  consum_bucket = local.consum_bucket
 }
 
 provider "archive" {}
