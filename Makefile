@@ -85,13 +85,28 @@ coverage-report: ## coverage report of all tests
 .PHONY: deploy-localstack
 deploy-localstack: ## Deploy in Localstack
 	cd infrastructure; \
+	terraform init; \
 	terraform apply -auto-approve
+
+.PHONY: clean
+clean: ## Clean Terraform outputs
+	cd infrastructure; \
+	rm -r .terraform; \
+	rm .terraform.lock.hcl; \
+	rm terraform.tfstate; \
+ 	rm terraform.tfstate.backup; \
+ 	rm *.zip
 
 .PHONY: plan
 plan: ## terraform plan
 	cd infrastructure; \
 	terraform init; \
 	terraform plan -state=infrastructure -state-out=infrastructure
+
+.PHONY: destroy-localstack
+destroy: ## terraform destroy
+	cd infrastructure; \
+	terraform destroy
 
 .PHONY: upload-unicorn
 upload-unicorn: ## Upload unicorn to intake bucket
