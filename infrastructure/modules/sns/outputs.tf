@@ -3,5 +3,5 @@ output "lambda_sns_subscriber_arn" {
 }
 
 output "sns_topic_arn" {
-  value = aws_sns_topic_subscription.invoke_with_sns.topic_arn
+  value = aws_sns_topic_subscription.invoke_by_sns.topic_arn
 }

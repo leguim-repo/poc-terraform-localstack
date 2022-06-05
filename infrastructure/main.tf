@@ -2,7 +2,8 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.27"
+      # version = "3.50.0" # fail with localstasck and sns -> https://githubmemory.com/repo/localstack/localstack/issues/4321
+      version = "3.29.0"
     }
   }
 
@@ -33,7 +34,7 @@ data "archive_file" "zip" {
 }
 
 resource "aws_lambda_function" "lambda_dummy" {
-  function_name = "lambda_dummy"
+  function_name                  = "lambda_dummy"
   role                           = module.roles.lambda_role
   handler                        = "lambda_dummy.lambda_handler"
   runtime                        = "python3.8"
@@ -60,4 +61,15 @@ module "sns" {
   sns_reception_topic   = local.sns_reception_topic
   lambda_role_execution = module.roles.lambda_role
   depends_on            = [module.roles.lambda_role]
+}
+
+module "etls" {
+  source                = "./modules/etls"
+  environment           = local.environment
+  tags                  = local.tags
+  project_name          = local.tags.Project
+  lambda_role_execution = module.roles.lambda_role
+  intake_bucket         = module.buckets.intake_bucket
+  consum_bucket         = module.buckets.consum_bucket
+  depends_on            = [module.roles.lambda_role, module.buckets]
 }

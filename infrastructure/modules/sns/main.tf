@@ -21,11 +21,11 @@ resource "aws_sns_topic" "lambda_sns_subscriber" {
   tags         = var.tags
 }
 
-resource "aws_sns_topic_subscription" "invoke_with_sns" {
+resource "aws_sns_topic_subscription" "invoke_by_sns" {
   topic_arn = aws_sns_topic.lambda_sns_subscriber.arn
   protocol  = "lambda"
-  endpoint  = aws_lambda_function.lambda_sns_subscriber.arn
-
+  endpoint = aws_sns_topic.lambda_sns_subscriber.arn
+  endpoint_auto_confirms = false
 }
 
 resource "aws_lambda_permission" "allow_sns_invoke_lambda" {
