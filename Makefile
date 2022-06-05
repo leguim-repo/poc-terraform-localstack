@@ -82,8 +82,8 @@ coverage-report: ## coverage report of all tests
 	coverage html
 	open htmlcov/index.html
 
-.PHONY: deploy
-deploy: ## Deploy in Localstack
+.PHONY: deploy-localstack
+deploy-localstack: ## Deploy in Localstack
 	cd infrastructure; \
 	terraform apply -auto-approve
 

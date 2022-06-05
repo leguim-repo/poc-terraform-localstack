@@ -10,6 +10,9 @@ terraform {
   required_version = ">= 0.14.9"
 }
 
+provider "archive" {}
+
+
 module "roles" {
   source       = "./modules/roles"
   environment  = local.environment
@@ -26,32 +29,6 @@ module "buckets" {
   consum_bucket = local.consum_bucket
 }
 
-provider "archive" {}
-data "archive_file" "zip" {
-  type        = "zip"
-  source_file = "../app/etls/lambda_dummy/src/lambda_dummy.py"
-  output_path = "lambda_dummy.zip"
-}
-
-resource "aws_lambda_function" "lambda_dummy" {
-  function_name                  = "lambda_dummy"
-  role                           = module.roles.lambda_role
-  handler                        = "lambda_dummy.lambda_handler"
-  runtime                        = "python3.8"
-  memory_size                    = 128
-  timeout                        = 900
-  reserved_concurrent_executions = 1
-  package_type                   = "Zip"
-
-  filename         = data.archive_file.zip.output_path
-  source_code_hash = data.archive_file.zip.output_base64sha256
-
-  environment {
-    variables = {
-      greeting = "Hello is in os.environ"
-    }
-  }
-}
 
 module "sns" {
   source                = "./modules/sns"
