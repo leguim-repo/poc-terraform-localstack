@@ -18,7 +18,7 @@ awslocal logs describe-log-streams --log-group-name "/aws/lambda/lambda_sns_subs
 awslocal logs describe-log-streams --log-group-name "/aws/lambda/lambda_dummy"
 
 awslocal logs get-log-events --log-group-name "/aws/lambda/lambda_sns_publisher" --log-stream-name "2022/05/28/[LATEST]29201819"
-awslocal logs get-log-events --log-group-name "/aws/lambda/lambda_sns_subscriber" --log-stream-name "2022/06/04/[LATEST]9575fbcc"
+awslocal logs get-log-events --log-group-name "/aws/lambda/lambda_sns_subscriber" --log-stream-name "2022/06/05/[LATEST]c0b51df1"
 awslocal logs get-log-events --log-group-name "/aws/lambda/lambda_dummy" --log-stream-name "2022/06/04/[LATEST]9575fbcc"
 
 

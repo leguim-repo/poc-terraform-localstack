@@ -5,9 +5,9 @@ services:
     container_name: tf_localstack
     ports:
       - "127.0.0.1:4566:4566" # LocalStack Edge Proxy
-    environment:
+    #environment:
       #- SERVICES=cloudformation,iam,s3,lambda,events,ssm,sqs,sns,kms,ec2
-      - DEBUG=1
+      #- DEBUG=1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     network_mode: bridge
