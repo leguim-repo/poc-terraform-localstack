@@ -115,4 +115,4 @@ destroy-localstack: ## terraform destroy
 .PHONY: upload-unicorn
 upload-unicorn: ## Upload unicorn to intake bucket
 	cd resources; \
-	awslocal s3 cp unicorn.jpeg s3://s3-intake-fundaciontonymanero-test/pictures/unicorn.jpeg
+	awslocal s3 cp unicorn.jpeg s3://s3-intake-ftm-test/pictures/unicorn.jpeg
