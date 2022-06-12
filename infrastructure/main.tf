@@ -51,6 +51,14 @@ module "etls" {
   depends_on            = [module.roles.lambda_role, module.buckets]
 }
 
+module "paramstore" {
+  source       = "./modules/paramstore"
+  environment  = local.environment
+  tags         = local.tags
+  project_name = local.tags.Project
+  intake_bucket_name_value = local.intake_bucket
+}
+
 module "tfbucket" {
   source           = "./modules/tfbucket"
   environment      = local.environment

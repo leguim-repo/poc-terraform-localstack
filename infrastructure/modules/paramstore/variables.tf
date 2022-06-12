@@ -1,8 +1,3 @@
-variable "intake_bucket_name" {
-  type    = string
-  default = "intake_bucket_name"
-}
-
 variable "intake_bucket_name_value" {
   type    = string
   default = "intake_bucket_name_value"
