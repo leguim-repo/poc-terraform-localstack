@@ -1,14 +1,17 @@
-version: '3.4'
+version: "3.9"
+
 services:
   localstack:
     image: localstack/localstack:0.14.3.1
     container_name: tf_localstack
     ports:
       - "127.0.0.1:4566:4566" # LocalStack Edge Proxy
-    #environment:
+    environment:
+      - DATA_DIR=/tmp/localstack/data
       #- SERVICES=cloudformation,iam,s3,lambda,events,ssm,sqs,sns,kms,ec2
       #- DEBUG=1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/tmp/localstack/data
     network_mode: bridge
 

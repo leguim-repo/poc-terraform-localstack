@@ -250,3 +250,4 @@ infrastructure/**.zip
 /infrastructure/terraform.tfstate
 /infrastructure/terraform.tfstate.backup
 /infrastructure/errored.tfstate
+/localstack/data/
