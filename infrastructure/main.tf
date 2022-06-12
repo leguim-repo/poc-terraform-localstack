@@ -50,3 +50,26 @@ module "etls" {
   consum_bucket         = module.buckets.consum_bucket
   depends_on            = [module.roles.lambda_role, module.buckets]
 }
+
+module "tfbucket" {
+  source           = "./modules/tfbucket"
+  environment      = local.environment
+  tags             = local.tags
+  project_name     = local.tags.Project
+  terraform_bucket = local.terraform_bucket
+}
+
+terraform {
+  backend "s3" {
+    bucket                      = "s3-terraform-ftm-test"
+    key                         = "terraform/terraform.tfstate"
+    region                      = "us-east-1"
+    endpoint                    = "http://localhost:4566"
+    skip_credentials_validation = true
+    skip_metadata_api_check     = true
+    force_path_style            = true
+    dynamodb_table              = "terraformlock"
+    dynamodb_endpoint           = "http://localhost:4566"
+    encrypt                     = true
+  }
+}

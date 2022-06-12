@@ -21,7 +21,7 @@ resource "aws_s3_bucket" "terraform_bucket" {
 }
 
 resource "aws_s3_bucket_public_access_block" "terraform_state_access" {
-  bucket = aws_s3_bucket.tf_bucket.id
+  bucket = aws_s3_bucket.terraform_bucket.id
   block_public_acls       = true
   ignore_public_acls      = true
   block_public_policy     = true
