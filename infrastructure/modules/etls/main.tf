@@ -5,6 +5,7 @@ data "archive_file" "zip" {
 }
 resource "aws_lambda_function" "lambda_dummy" {
   function_name                  = "lambda_dummy-${var.project_name}-${var.environment}"
+  description                    = "Lambda dummy"
   role                           = var.lambda_role_execution
   tags                           = var.tags
   handler                        = "lambda_dummy.lambda_handler"
@@ -40,6 +41,7 @@ data "archive_file" "lambda_intake_zip" {
 }
 resource "aws_lambda_function" "lambda_intake" {
   function_name                  = "lambda_intake-${var.project_name}-${var.environment}"
+  description                    = "Lambda data intake"
   role                           = var.lambda_role_execution
   tags                           = var.tags
   handler                        = "lambda_intake.lambda_handler"
