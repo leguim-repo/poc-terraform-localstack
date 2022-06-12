@@ -9,7 +9,7 @@ locals {
   tags = {
     created_by  = "Mike"
     Environment = local.environment
-    Project     = "fundaciontonymanero"
+    Project     = "ftm"
   }
 
 }
