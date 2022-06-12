@@ -1,7 +1,8 @@
 resource "aws_s3_bucket" "terraform_bucket" {
-  bucket = "${var.terraform_bucket}-${var.project_name}-${var.environment}"
-  tags   = var.tags
-  acl    = "private"
+  bucket        = "${var.terraform_bucket}-${var.project_name}-${var.environment}"
+  tags          = var.tags
+  acl           = "private"
+  force_destroy = true # this flag should be to false for prod environment to avoid destroy tfstate bucket
 
   versioning {
     enabled = true
@@ -16,12 +17,13 @@ resource "aws_s3_bucket" "terraform_bucket" {
   }
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false # this flag should be to true for prod environment to avoid destroy tfstate bucket
+
   }
 }
 
 resource "aws_s3_bucket_public_access_block" "terraform_state_access" {
-  bucket = aws_s3_bucket.terraform_bucket.id
+  bucket                  = aws_s3_bucket.terraform_bucket.id
   block_public_acls       = true
   ignore_public_acls      = true
   block_public_policy     = true

@@ -43,6 +43,14 @@ make all-dependencies
 docker-compose up -d
 ~~~
 
+### Bootstrap Localstack
+
+This example need create before to deploy a bucket to save Terraform state in Localstack
+
+~~~bash
+make bootstrap-localstack
+~~~
+
 ### Deploy Infrastructure to Localstack
 
 ~~~bash
@@ -53,6 +61,16 @@ make deploy-localstack
 
 ~~~bash
 make upload-unicorn
+~~~
+
+### Destroy all infrastructure
+
+At finish this command you receive an error message like <code>Error: Failed to save state</code> and <code>Error: Failed to
+persist state to backend</code>
+This is due because this example is configured to destroy too the bucket used for Terraform to save tfstate file
+
+~~~bash
+make destroy-localstack
 ~~~
 
 NI: No unicorn has been mistreated to carry out this project

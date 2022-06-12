@@ -82,11 +82,15 @@ coverage-report: ## coverage report of all tests
 	coverage html
 	open htmlcov/index.html
 
+.PHONY: bootstrap-localstack
+bootstrap-localstack: ## Create bucket for save terraform state
+	awslocal s3 mb s3://s3-terraform-ftm-test
+
 .PHONY: deploy-localstack
 deploy-localstack: ## Deploy in Localstack
 	cd infrastructure; \
 	terraform init; \
-	terraform apply -auto-approve
+	terraform apply -auto-approve -lock=false
 
 .PHONY: clean
 clean: ## Clean Terraform outputs
@@ -101,12 +105,12 @@ clean: ## Clean Terraform outputs
 plan: ## terraform plan
 	cd infrastructure; \
 	terraform init; \
-	terraform plan -state=infrastructure -state-out=infrastructure
+	terraform plan -state=infrastructure -state-out=infrastructure -lock=false
 
 .PHONY: destroy-localstack
-destroy: ## terraform destroy
+destroy-localstack: ## terraform destroy
 	cd infrastructure; \
-	terraform destroy
+	terraform destroy -lock=false
 
 .PHONY: upload-unicorn
 upload-unicorn: ## Upload unicorn to intake bucket
