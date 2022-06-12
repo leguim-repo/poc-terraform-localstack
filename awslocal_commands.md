@@ -20,7 +20,7 @@ awslocal sns publish --topic-arn  "arn:aws:sns:us-east-1:000000000000:sns-recept
 awslocal lambda list-functions
 awslocal lambda invoke --function-name lambda_sns_publisher --payload '{ "name": "Bob" }' invoke_response.json ; cat invoke_response.json
 awslocal lambda invoke --function-name lambda_sns_subscriber --payload '{ "name": "Bob" }' invoke_response.json ; cat invoke_response.json
-awslocal lambda invoke --function-name lambda_dummy invoke_response.json ; cat invoke_response.json
+awslocal lambda invoke --function-name lambda_dummy-ftm-test invoke_response.json ; cat invoke_response.json  | jq .
 ~~~
 
 ## Cloudwatch & Logs
