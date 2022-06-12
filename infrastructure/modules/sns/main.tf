@@ -18,9 +18,6 @@ resource "aws_lambda_function" "lambda_sns_subscriber" {
   filename         = data.archive_file.lambda_sns_subscriber_zip.output_path
   source_code_hash = data.archive_file.lambda_sns_subscriber_zip.output_base64sha256
 
-  environment {
-
-  }
 }
 resource "aws_cloudwatch_log_group" "lambda_sns_subscriber" {
   retention_in_days = 7
