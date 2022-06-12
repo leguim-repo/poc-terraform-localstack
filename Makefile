@@ -86,8 +86,8 @@ coverage-report: ## coverage report of all tests
 bootstrap-localstack: ## Create bucket for save terraform state
 	awslocal s3 mb s3://s3-terraform-ftm-test
 
-.PHONY: deploy-localstack
-deploy-localstack: ## Deploy in Localstack
+.PHONY: apply-localstack
+apply-localstack: ## Deploy in Localstack
 	cd infrastructure; \
 	terraform init; \
 	terraform apply -auto-approve -lock=false
