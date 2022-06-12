@@ -3,6 +3,11 @@ variable "intake_bucket_name_value" {
   default = "intake_bucket_name_value"
 }
 
+variable "consum_bucket_name_value" {
+  type    = string
+  default = "consum_bucket_name_value"
+}
+
 variable "environment" {
   type    = string
   default = "test"

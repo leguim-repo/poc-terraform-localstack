@@ -58,3 +58,13 @@ awslocal s3api get-bucket-policy-status --bucket s3-event-to-sns
 awslocal s3 cp requirements.txt s3://s3-event-to-sns/requirements.txt
 awslocal s3 cp unicorn.jpeg s3://s3-intake-fundaciontonymanero-test/pictures/unicorn.jpeg
 ~~~
+
+## Parameters Store
+
+~~~bash
+awslocal ssm describe-parameters
+awslocal ssm get-parameter --name /ftm/intake_bucket_name
+awslocal ssm get-parameter --name /ftm/consum_bucket_name | jq
+awslocal ssm get-parameter --name /ftm/consum_bucket_name | jq '.Parameter.Value'
+awslocal ssm get-parameter --name /ftm/consum_bucket_name | jq '.Parameter.ARN'
+~~~

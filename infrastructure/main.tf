@@ -52,11 +52,12 @@ module "etls" {
 }
 
 module "paramstore" {
-  source       = "./modules/paramstore"
-  environment  = local.environment
-  tags         = local.tags
-  project_name = local.tags.Project
+  source                   = "./modules/paramstore"
+  environment              = local.environment
+  tags                     = local.tags
+  project_name             = local.tags.Project
   intake_bucket_name_value = local.intake_bucket
+  consum_bucket_name_value = local.consum_bucket
 }
 
 module "tfbucket" {
