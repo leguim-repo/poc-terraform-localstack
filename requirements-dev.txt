@@ -4,3 +4,4 @@ isort
 coverage
 coverage-badge
 awscli-local
+awscli
