@@ -1,9 +1,12 @@
 locals {
   environment = "test"
 
-  intake_bucket = "s3-intake"
-  consum_bucket = "s3-consum"
   terraform_bucket = "s3-terraform"
+
+  buckets = {
+    "intake" = { bucket_name = "s3-intake" },
+    "consum" = { bucket_name = "s3-consum" },
+  }
 
   sns_reception_topic = "sns-reception-topic"
 

@@ -22,11 +22,10 @@ module "roles" {
 
 module "buckets" {
   source        = "./modules/buckets"
+  buckets       = local.buckets
   environment   = local.environment
   tags          = local.tags
   project_name  = local.tags.Project
-  intake_bucket = local.intake_bucket
-  consum_bucket = local.consum_bucket
 }
 
 
@@ -46,8 +45,7 @@ module "etls" {
   tags                  = local.tags
   project_name          = local.tags.Project
   lambda_role_execution = module.roles.lambda_role
-  intake_bucket         = module.buckets.intake_bucket
-  consum_bucket         = module.buckets.consum_bucket
+  buckets_created           = module.buckets.buckets_created
   depends_on            = [module.roles.lambda_role, module.buckets]
 }
 
@@ -56,8 +54,10 @@ module "paramstore" {
   environment              = local.environment
   tags                     = local.tags
   project_name             = local.tags.Project
-  intake_bucket_name_value = local.intake_bucket
-  consum_bucket_name_value = local.consum_bucket
+  intake_bucket_name_value = module.buckets.buckets_created.intake
+  consum_bucket_name_value = module.buckets.buckets_created.consum
+  depends_on               = [module.buckets]
+
 }
 
 module "tfbucket" {

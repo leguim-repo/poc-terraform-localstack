@@ -1,11 +1,5 @@
-variable "intake_bucket" {
-  type    = string
-  default = "intake"
-}
-
-variable "consum_bucket" {
-  type    = string
-  default = "consum"
+variable "buckets" {
+  default = [{ bucket_name = "bucket_name" }]
 }
 
 variable "environment" {

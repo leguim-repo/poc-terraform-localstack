@@ -13,6 +13,10 @@ variable "lambda_role_execution" {
   default = "lambda_role_execution"
 }
 
+variable "buckets_created" {
+  default = {}
+}
+
 variable "environment" {
   type    = string
   default = "test"

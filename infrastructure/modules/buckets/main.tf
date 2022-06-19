@@ -1,11 +1,8 @@
-resource "aws_s3_bucket" "intake_bucket" {
-  bucket = "${var.intake_bucket}-${var.project_name}-${var.environment}"
-  tags   = var.tags
-}
+resource "aws_s3_bucket" "buckets" {
+  for_each = var.buckets
+  bucket   = "${each.value.bucket_name}-${var.project_name}-${var.environment}"
+  tags     = var.tags
 
-resource "aws_s3_bucket" "consum_bucket" {
-  bucket = "${var.consum_bucket}-${var.project_name}-${var.environment}"
-  tags   = var.tags
 }
 
 ##### S3 Notifications

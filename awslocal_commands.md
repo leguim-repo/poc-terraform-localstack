@@ -32,13 +32,13 @@ awslocal logs describe-log-groups --query "logGroups[*].logGroupName"
 awslocal logs describe-log-streams --log-group-name "/aws/lambda/lambda_sns_publisher"
 awslocal logs describe-log-streams --log-group-name "/aws/lambda/lambda_sns_subscriber"
 awslocal logs describe-log-streams --log-group-name "/aws/lambda/lambda_dummy"
-awslocal logs describe-log-streams --log-group-name "/aws/lambda/lambda_intake"
+awslocal logs describe-log-streams --log-group-name "/aws/lambda/lambda_intake-ftm-test"
 awslocal logs describe-log-streams --log-group-name "sns/us-east-1/000000000000/sns-reception-topic-ftm-test"
 
 awslocal logs get-log-events --log-group-name "/aws/lambda/lambda_sns_publisher" --log-stream-name "2022/05/28/[LATEST]29201819"
 awslocal logs get-log-events --log-group-name "/aws/lambda/lambda_sns_subscriber" --log-stream-name "2022/06/05/[LATEST]c0b51df1"
 awslocal logs get-log-events --log-group-name "/aws/lambda/lambda_dummy" --log-stream-name "2022/06/04/[LATEST]9575fbcc"
-awslocal logs get-log-events --log-group-name "/aws/lambda/lambda_intake" --log-stream-name "2022/06/12/[LATEST]af45b143"
+awslocal logs get-log-events --log-group-name "/aws/lambda/lambda_intake-ftm-test" --log-stream-name "2022/06/19/[LATEST]0c88678d"
 awslocal logs get-log-events --log-group-name "sns/us-east-1/000000000000/sns-reception-topic-ftm-test" --log-stream-name "b58d487f-c835-4d43-bc7e-9a6b6f6aab68"
 ~~~
 

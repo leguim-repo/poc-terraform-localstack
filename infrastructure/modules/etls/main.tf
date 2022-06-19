@@ -68,8 +68,7 @@ resource "aws_cloudwatch_log_group" "lambda_intake" {
 
 ## Lambda triggered when file upload
 resource "aws_s3_bucket_notification" "s3_lambda_on_upload" {
-  bucket = var.intake_bucket
-
+  bucket = var.buckets_created.intake
   lambda_function {
     lambda_function_arn = aws_lambda_function.lambda_intake.arn
     events              = ["s3:ObjectCreated:*"]
