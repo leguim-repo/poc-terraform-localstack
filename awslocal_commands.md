@@ -68,3 +68,12 @@ awslocal ssm get-parameter --name /ftm/consum_bucket_name | jq
 awslocal ssm get-parameter --name /ftm/consum_bucket_name | jq '.Parameter.Value'
 awslocal ssm get-parameter --name /ftm/consum_bucket_name | jq '.Parameter.ARN'
 ~~~
+
+
+## EventBridge
+
+~~~bash
+awslocal events list-event-buses
+awslocal events describe-event-bus
+awslocal events list-rules | jq
+~~~

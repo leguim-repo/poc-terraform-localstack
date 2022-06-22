@@ -17,3 +17,8 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "lambda_role_execution" {
+  type    = string
+  default = "lambda_role_execution"
+}

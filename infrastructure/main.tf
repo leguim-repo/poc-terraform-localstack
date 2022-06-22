@@ -26,6 +26,7 @@ module "buckets" {
   environment   = local.environment
   tags          = local.tags
   project_name  = local.tags.Project
+  lambda_role_execution = module.roles.lambda_role
 }
 
 
