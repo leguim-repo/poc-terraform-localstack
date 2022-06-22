@@ -1,7 +1,14 @@
 resource "aws_s3_bucket" "buckets" {
-  for_each    = var.buckets
-  bucket      = "${each.value.bucket_name}-${var.project_name}-${var.environment}"
-  tags        = var.tags
+  for_each = var.buckets
+  bucket   = "${each.value.bucket_name}-${var.project_name}-${var.environment}"
+  force_destroy = true # this flag should be to false for prod environment to avoid destroy tfstate bucket
+
+  lifecycle {
+    prevent_destroy = false # this flag should be to true for prod environment to avoid destroy tfstate bucket
+
+  }
+
+  tags = var.tags
 }
 
 data "archive_file" "lambda_eventbridge_zip" {
