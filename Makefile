@@ -5,6 +5,11 @@ UID = $(shell id -u)
 PWD = $(shell pwd)
 PYTHON=$(shell which python3)
 
+export AWS_ACCESS_KEY_ID:=localstackkey123
+export AWS_SECRET_KEY:=localstacksecretkey
+export AWS_DEFAULT_REGION:=eu-central-1
+
+
 .PHONY: help
 help: ## prints all targets available and their description
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
