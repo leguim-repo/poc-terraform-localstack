@@ -12,7 +12,7 @@ resource "aws_lambda_function" "lambda_sns_subscriber" {
   runtime                        = "python3.8"
   memory_size                    = 128
   timeout                        = 900
-  reserved_concurrent_executions = 1000
+  reserved_concurrent_executions = 1
   package_type                   = "Zip"
 
   filename         = data.archive_file.lambda_sns_subscriber_zip.output_path

@@ -30,15 +30,15 @@ resource "aws_s3_bucket_public_access_block" "terraform_state_access" {
   restrict_public_buckets = true
 }
 
-resource "aws_dynamodb_table" "terraform_state_lock" {
-  name           = "terraformlock"
-  read_capacity  = 0
-  write_capacity = 0
-  billing_mode   = "PAY_PER_REQUEST"
-  hash_key       = "LockID"
-
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-}
+#resource "aws_dynamodb_table" "terraform_state_lock" {
+#  name           = "terraformlock"
+#  read_capacity  = 0
+#  write_capacity = 0
+#  billing_mode   = "PAY_PER_REQUEST"
+#  hash_key       = "LockID"
+#
+#  attribute {
+#    name = "LockID"
+#    type = "S"
+#  }
+#}

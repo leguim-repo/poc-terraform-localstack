@@ -11,7 +11,7 @@ awslocal iam list-policies
 
 ~~~bash
 awslocal sns list-topics
-awslocal sns publish --topic-arn  "arn:aws:sns:us-east-1:000000000000:sns-reception-topic-ftm-test" --subject "[RAMMSTEIN]" --message "testing sns from asw cli"
+awslocal sns publish --topic-arn  "arn:aws:sns:eu-central-1:000000000000:sns-reception-topic-ftm-test" --subject "[RAMMSTEIN]" --message "testing sns from asw cli"
 ~~~
 
 ## Lambda

@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  localstack:
+  localstack-terraform:
     image: localstack/localstack:0.14.3.1
     container_name: tf_localstack
     ports:

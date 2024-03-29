@@ -90,6 +90,7 @@ coverage-report: ## coverage report of all tests
 .PHONY: bootstrap-localstack
 bootstrap-localstack: ## Create bucket for save terraform state
 	awslocal s3 mb s3://s3-terraform-ftm-test
+	awslocal dynamodb create-table --table-name terraformlock --attribute-definitions AttributeName=LockID,AttributeType=S --key-schema AttributeName=LockID,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
 
 .PHONY: apply-localstack
 apply-localstack: ## Deploy in Localstack
