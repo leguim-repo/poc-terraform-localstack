@@ -1,5 +1,18 @@
 # Cheatsheet with awslocal commands to play with localstack
 
+## S3
+
+~~~bash
+awslocal s3api get-bucket-location --bucket pre-snowflake-raw-pepe-integration
+
+echo "\nBuckets and region associated:"
+for bucket in `awslocal s3api list-buckets --query "Buckets[].Name" --output text`; do
+    location=`awslocal s3api get-bucket-location --bucket $bucket --output text`
+    echo "Bucket: $bucket - Region: $location"
+done
+
+~~~
+
 ## IAM
 
 ~~~bash
@@ -69,11 +82,40 @@ awslocal ssm get-parameter --name /ftm/consum_bucket_name | jq '.Parameter.Value
 awslocal ssm get-parameter --name /ftm/consum_bucket_name | jq '.Parameter.ARN'
 ~~~
 
-
 ## EventBridge
 
 ~~~bash
 awslocal events list-event-buses
 awslocal events describe-event-bus
 awslocal events list-rules | jq
+~~~
+
+## Kms
+
+~~~bash
+awslocal kms list-keys
+~~~
+
+## DynamoDb
+
+~~~bash
+awslocal dynamodb list-tables
+awslocal dynamodb describe-global-table
+~~~
+
+## VPC
+
+~~~bash
+awslocal ec2 describe-vpcs
+awslocal ec2 describe-vpc-endpoints
+awslocal ec2 describe-vpc-endpoint-services
+awslocal ec2 describe-security-groups
+~~~
+
+## Secrets Manager
+
+~~~bash
+awslocal secretsmanager list-secrets
+awslocal secretsmanager get-secret-value --secret-id my.secrets | jq -r '.SecretString'
+awslocal secretsmanager update-secret --secret-id my_secret_name --secret-string file://dpp-secret.json
 ~~~
